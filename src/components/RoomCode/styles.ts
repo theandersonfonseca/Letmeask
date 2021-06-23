@@ -14,6 +14,7 @@ export const Wrapper = styled.button`
 
 export const Content = styled.div`
   ${({ theme }) => css`
+    height: 100%;
     background: ${theme.colors.purple};
     padding: 0 1.2rem;
     display: flex;
