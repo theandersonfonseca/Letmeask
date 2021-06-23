@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Button = styled.button`
+export const Wrapper = styled.button`
   ${({ theme }) => css`
     height: 5rem;
     width: 100%;
@@ -17,7 +17,7 @@ export const Button = styled.button`
     transition: filter 0.2s;
 
     &:not(:disabled):hover {
-      filter: brightness(0.9)
+      filter: brightness(0.9);
     }
 
     &:disabled {
@@ -25,4 +25,4 @@ export const Button = styled.button`
       cursor: not-allowed;
     }
   `}
-`
+`;

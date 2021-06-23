@@ -1,13 +1,11 @@
-import { ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes } from 'react';
 
-import * as S from './styles'
+import * as S from './styles';
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 function Button(props: ButtonProps) {
-  return (
-    <S.Button {...props} />
-  )
+  return <S.Wrapper {...props} />;
 }
 
-export default Button
+export default Button;
