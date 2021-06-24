@@ -92,6 +92,32 @@ export const GoogleImgIcon = styled.img`
   `}
 `;
 
+export const UserInfo = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: ${theme.spacings.medium};
+  `}
+`;
+
+export const Avatar = styled.img`
+  ${({ theme }) => css`
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 50%;
+    margin-top: ${theme.spacings.medium};
+  `}
+`;
+
+export const AuthorName = styled.span`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.xsmall};
+    font-size: ${theme.font.sizes.large};
+  `}
+`;
+
 export const Separator = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
@@ -135,5 +161,17 @@ export const Input = styled.input`
     padding: 0 ${theme.spacings.xsmall};
     background: ${theme.colors.white};
     border: 0.1rem solid ${theme.colors.mediumGray};
+  `}
+`;
+
+export const Call = styled.p`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.small};
+    color: ${theme.colors.darkGray};
+    margin-top: ${theme.spacings.small};
+
+    a {
+      color: ${theme.colors.red};
+    }
   `}
 `;

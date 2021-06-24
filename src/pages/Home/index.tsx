@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import * as S from './styles';
 
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { database } from '../../services/firebase';
 
@@ -39,7 +39,7 @@ function Home() {
     }
 
     if (roomRef.val().endedAt) {
-      toast.error('Esta sala foi fechada.');
+      toast.error('Esta sala foi encerrada.');
 
       return;
     }
@@ -62,12 +62,21 @@ function Home() {
         <S.Content>
           <S.LogoImg src={logoImg} alt='letmeask' />
 
-          <S.GoogleButton onClick={handleCreateRoom}>
-            <S.GoogleImgIcon src={googleIconImg} alt='Logo da Google' />
-            Crie sua sala com o Google
-          </S.GoogleButton>
+          {user ? (
+            <S.UserInfo>
+              <S.Avatar src={user.avatar} alt={user.name} />
+              <S.AuthorName>{user.name}</S.AuthorName>
+            </S.UserInfo>
+          ) : (
+            <>
+              <S.GoogleButton onClick={handleCreateRoom}>
+                <S.GoogleImgIcon src={googleIconImg} alt='Logo da Google' />
+                Crie sua sala com o Google
+              </S.GoogleButton>
 
-          <S.Separator>ou entre em uma sala</S.Separator>
+              <S.Separator>ou entre em uma sala</S.Separator>
+            </>
+          )}
 
           <S.Form onSubmit={handleJoinRoom}>
             <S.Input
@@ -79,6 +88,13 @@ function Home() {
 
             <Button>Entrar na sala</Button>
           </S.Form>
+
+          {user && (
+            <S.Call>
+              Quer criar sua própria sala?{' '}
+              <Link to='/rooms/new'>clique aqui</Link>
+            </S.Call>
+          )}
         </S.Content>
       </S.Main>
     </S.Wrapper>
