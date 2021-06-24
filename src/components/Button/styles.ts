@@ -1,7 +1,17 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
-export const Wrapper = styled.button`
-  ${({ theme }) => css`
+import { ButtonProps } from '.';
+
+const wrapperModifiers = {
+  isOutlined: (theme: DefaultTheme) => css`
+    background: ${theme.colors.white};
+    border: 0.1rem solid ${theme.colors.purple};
+    color: ${theme.colors.purple};
+  `,
+};
+
+export const Wrapper = styled.button<ButtonProps>`
+  ${({ theme, isOutlined }) => css`
     height: 5rem;
     width: 100%;
     padding: 0 ${theme.spacings.medium};
@@ -24,5 +34,7 @@ export const Wrapper = styled.button`
       opacity: 0.6;
       cursor: not-allowed;
     }
+
+    ${isOutlined && wrapperModifiers.isOutlined(theme)}
   `}
 `;
