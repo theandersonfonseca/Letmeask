@@ -1,7 +1,7 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import * as S from './styles';
 
-import { useParams } from 'react-router';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { database } from '../../services/firebase';
 
@@ -19,10 +19,11 @@ type RoomParams = {
 };
 
 function Room() {
+  const history = useHistory();
   const { user } = useAuth();
   const { id: roomId } = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
-  const { questions, title } = useRoom(roomId);
+  const { questions, title, isClosed } = useRoom(roomId);
 
   async function handleSendQuestion(e: FormEvent) {
     e.preventDefault();
@@ -66,11 +67,23 @@ function Room() {
     }
   }
 
+  useEffect(() => {
+    const hasLoadedRoomInfo = isClosed !== undefined;
+
+    if (isClosed && hasLoadedRoomInfo) {
+      history.push(`/`);
+      toast.error('Esta sala foi encerrada.');
+    }
+  }, [history, isClosed]);
+
   return (
     <S.Wrapper>
       <S.Header>
         <S.Content>
-          <S.LogoImg src={logoImg} alt='Letmeask' />
+          <Link to='/'>
+            <S.LogoImg src={logoImg} alt='Letmeask' />
+          </Link>
+
           <RoomCode code={roomId} />
         </S.Content>
       </S.Header>
