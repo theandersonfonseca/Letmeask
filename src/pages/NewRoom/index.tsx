@@ -42,9 +42,18 @@ function NewRoom() {
 
       <S.Main>
         <S.Content>
-          <S.LogoImg src={logoImg} alt='letmeask' />
+          <Link to='/'>
+            <S.LogoImg src={logoImg} alt='letmeask' />
+          </Link>
 
           <S.Label>Crie uma nova sala</S.Label>
+
+          {user && (
+            <S.UserInfo>
+              <S.Avatar src={user.avatar} alt={user.name} />
+              <S.AuthorName>{user.name}</S.AuthorName>
+            </S.UserInfo>
+          )}
 
           <S.Form onSubmit={handleCreateRoom}>
             <S.Input
@@ -58,7 +67,8 @@ function NewRoom() {
           </S.Form>
 
           <S.Call>
-            Quer entrar em uma sala já existente <Link to='/'>clique aqui</Link>
+            Quer entrar em uma sala já existente?{' '}
+            <Link to='/'>clique aqui</Link>
           </S.Call>
         </S.Content>
       </S.Main>

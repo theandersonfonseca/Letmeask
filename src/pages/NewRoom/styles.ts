@@ -68,8 +68,34 @@ export const LogoImg = styled.img`
 export const Label = styled.h2`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xxlarge};
-    margin: ${theme.spacings.huge} 0 ${theme.spacings.small};
+    margin: ${theme.spacings.medium} 0 ${theme.spacings.small};
     font-family: 'Poppins', sans-serif;
+  `}
+`;
+
+export const UserInfo = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: ${theme.spacings.medium};
+  `}
+`;
+
+export const Avatar = styled.img`
+  ${({ theme }) => css`
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 50%;
+    margin-top: ${theme.spacings.medium};
+  `}
+`;
+
+export const AuthorName = styled.span`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.xsmall};
+    font-size: ${theme.font.sizes.large};
   `}
 `;
 
@@ -96,7 +122,7 @@ export const Call = styled.p`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
     color: ${theme.colors.darkGray};
-    margin-top: ${theme.spacings.xsmall};
+    margin-top: ${theme.spacings.small};
 
     a {
       color: ${theme.colors.red};
