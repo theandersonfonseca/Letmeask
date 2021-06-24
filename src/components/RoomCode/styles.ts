@@ -9,6 +9,11 @@ export const Wrapper = styled.button`
     border: 0.1rem solid ${theme.colors.purple};
     cursor: pointer;
     display: flex;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
   `}
 `;
 
