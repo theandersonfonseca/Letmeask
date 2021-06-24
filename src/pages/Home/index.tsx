@@ -2,17 +2,15 @@ import { FormEvent, useState } from 'react';
 import * as S from './styles';
 
 import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { database } from '../../services/firebase';
 
 import illustrationImg from '../../assets/images/illustration.svg';
 import logoImg from '../../assets/images/logo.svg';
 import googleIconImg from '../../assets/images/google-icon.svg';
-
 import Button from '../../components/Button';
 
-import { useAuth } from '../../hooks/useAuth';
-import { database } from '../../services/firebase';
-
-import Toast from 'react-hot-toast';
+import Toast, { toast } from 'react-hot-toast';
 
 function Home() {
   const history = useHistory();
@@ -36,6 +34,12 @@ function Home() {
 
     if (!roomRef.exists()) {
       Toast.error('Esta sala não existe.');
+
+      return;
+    }
+
+    if (roomRef.val().endedAt) {
+      toast.error('Esta sala foi fechada.');
 
       return;
     }
