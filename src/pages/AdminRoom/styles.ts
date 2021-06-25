@@ -116,3 +116,28 @@ export const DeleteQuestion = styled.button`
 `
 
 export const DeleteQuestionImg = styled.img``
+
+export const EmptyQuestionsWrapper = styled.div`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.huge};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  `}
+`
+
+export const EmptyQuestionsImg = styled.img``
+
+export const EmptyQuestionsTitle = styled.h2`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.medium};
+  `}
+`
+export const EmptyQuestionsText = styled.p`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.small};
+    color: ${theme.colors.darkGray};
+  `}
+`

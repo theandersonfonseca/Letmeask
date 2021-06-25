@@ -9,6 +9,7 @@ import deleteImg from '../../assets/images/delete.svg'
 import closeImg from '../../assets/images/close.svg'
 import checkImg from '../../assets/images/check.svg'
 import answerImg from '../../assets/images/answer.svg'
+import emptyQuestions from '../../assets/images/empty-questions.svg'
 import Button from '../../components/Button'
 import RoomCode from '../../components/RoomCode'
 import Question from '../../components/Question'
@@ -161,50 +162,70 @@ function AdminRoom() {
           )}
         </S.TitleWrapper>
 
-        <S.Questions>
-          {questions.map((question) => {
-            return (
-              <Question
-                key={question.id}
-                content={question.content}
-                author={question.author}
-                isAnswered={question.isAnswered}
-                isHighlighted={question.isHighlighted}
-              >
-                {!question.isAnswered && (
-                  <>
-                    <S.CheckQuestion
-                      type="button"
-                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                    >
-                      <S.CheckQuestionImg
-                        src={checkImg}
-                        alt="Destacar pergunta"
-                      />
-                    </S.CheckQuestion>
+        {questions.length === 0 ? (
+          <S.EmptyQuestionsWrapper>
+            <S.EmptyQuestionsImg src={emptyQuestions} alt="Nenhuma pergunta" />
 
-                    <S.AnswerQuestion
-                      type="button"
-                      onClick={() => handleHighlightQuestion(question.id)}
-                    >
-                      <S.AnswerQuestionImg
-                        src={answerImg}
-                        alt="Marcar como respondida"
-                      />
-                    </S.AnswerQuestion>
-                  </>
-                )}
+            <S.EmptyQuestionsTitle>
+              Nenhuma pergunta por aqui...
+            </S.EmptyQuestionsTitle>
 
-                <S.DeleteQuestion
-                  type="button"
-                  onClick={() => handleDeleteQuestion(question.id)}
+            <S.EmptyQuestionsText>
+              Envie o código desta sala para seus amigos e comece a responder
+              perguntas!
+            </S.EmptyQuestionsText>
+          </S.EmptyQuestionsWrapper>
+        ) : (
+          <S.Questions>
+            {questions.map((question) => {
+              return (
+                <Question
+                  key={question.id}
+                  content={question.content}
+                  author={question.author}
+                  isAnswered={question.isAnswered}
+                  isHighlighted={question.isHighlighted}
                 >
-                  <S.DeleteQuestionImg src={deleteImg} alt="Remover pergunta" />
-                </S.DeleteQuestion>
-              </Question>
-            )
-          })}
-        </S.Questions>
+                  {!question.isAnswered && (
+                    <>
+                      <S.CheckQuestion
+                        type="button"
+                        onClick={() =>
+                          handleCheckQuestionAsAnswered(question.id)
+                        }
+                      >
+                        <S.CheckQuestionImg
+                          src={checkImg}
+                          alt="Destacar pergunta"
+                        />
+                      </S.CheckQuestion>
+
+                      <S.AnswerQuestion
+                        type="button"
+                        onClick={() => handleHighlightQuestion(question.id)}
+                      >
+                        <S.AnswerQuestionImg
+                          src={answerImg}
+                          alt="Marcar como respondida"
+                        />
+                      </S.AnswerQuestion>
+                    </>
+                  )}
+
+                  <S.DeleteQuestion
+                    type="button"
+                    onClick={() => handleDeleteQuestion(question.id)}
+                  >
+                    <S.DeleteQuestionImg
+                      src={deleteImg}
+                      alt="Remover pergunta"
+                    />
+                  </S.DeleteQuestion>
+                </Question>
+              )
+            })}
+          </S.Questions>
+        )}
       </S.Main>
     </S.Wrapper>
   )
