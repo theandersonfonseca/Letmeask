@@ -32,7 +32,7 @@ const GlobalStyles: GlobalStyleComponent<
     body {
       font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.medium};
-      background: ${theme.colors.bgWhite};
+      background: ${theme.colors.white};
       color: ${theme.colors.black};
     }
   `}

@@ -7,26 +7,27 @@ export default {
       "Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
     light: 300,
     normal: 400,
-    bold: 600,
+    bold: 700,
     sizes: {
       xsmall: '1.2rem',
       small: '1.4rem',
       medium: '1.6rem',
       large: '1.8rem',
       xlarge: '2.0rem',
-      xxlarge: '2.8rem',
-      huge: '5.2rem'
+      xxlarge: '2.4rem',
+      huge: '3.6rem'
     }
   },
   colors: {
     purple: '#835AFD',
     hoverPurple: '#6F4BD8',
     lightPink: '#D67EE2',
+    red: '#EA4335',
     darkPink: '#E559F9',
     danger: '#E73F5D',
     hoverDanger: '#D73754',
-    bgWhite: '#F8F8F8',
-    bgDatails: '#FEFEFE',
+    textWhite: '#F8F8F8',
+    white: '#FFFFFF',
     black: '#29292E',
     shadow: '#050206',
     lightGray: '#DBDCDD',
@@ -42,7 +43,8 @@ export default {
     medium: '3.2rem',
     large: '4.0rem',
     xlarge: '4.8rem',
-    xxlarge: '5.6rem'
+    xxlarge: '5.6rem',
+    huge: '6.4rem'
   },
   layers: {
     base: 10,
