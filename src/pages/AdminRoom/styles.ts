@@ -38,6 +38,10 @@ export const ButtonsWrapper = styled.div`
       height: 4rem;
       width: auto;
     }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
   `}
 `
 
