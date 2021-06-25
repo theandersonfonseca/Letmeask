@@ -20,7 +20,7 @@ type RoomParams = {
 
 function Room() {
   const history = useHistory()
-  const { user } = useAuth()
+  const { user, signInWithGoogle } = useAuth()
   const { id: roomId } = useParams<RoomParams>()
   const [newQuestion, setNewQuestion] = useState('')
   const { questions, title, isClosed } = useRoom(roomId)
@@ -54,6 +54,12 @@ function Room() {
     questionId: string,
     likeId: string | undefined
   ) {
+    if (!user) {
+      toast.error('Você precisa estar logado.')
+
+      return
+    }
+
     if (likeId) {
       await database
         .ref(`/rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
@@ -65,6 +71,14 @@ function Room() {
           authorId: user?.id
         })
     }
+  }
+
+  async function handleLogin() {
+    if (!user) {
+      await signInWithGoogle()
+    }
+
+    history.push('/rooms/new')
   }
 
   useEffect(() => {
@@ -113,7 +127,10 @@ function Room() {
             ) : (
               <S.FormFooterSpan>
                 Para enviar uma pergunta,
-                <S.FormFooterCallLogin> faça seu login</S.FormFooterCallLogin>
+                <S.FormFooterCallLogin onClick={handleLogin}>
+                  {' '}
+                  faça seu login
+                </S.FormFooterCallLogin>
               </S.FormFooterSpan>
             )}
 
