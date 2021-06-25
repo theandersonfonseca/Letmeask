@@ -12,7 +12,7 @@ Letmeask é uma aplicação com a proposta de que criadores de conteúdo criem s
 
 ## 📷 Demonstração
 
-![](./github/lemeask.gif)
+![](./github/letmeask.gif)
 
 ---
 
@@ -32,7 +32,7 @@ Letmeask é uma aplicação com a proposta de que criadores de conteúdo criem s
 
 ---
 
-![](./github/home-mobile.png)
+![](./github/home-mobile.png) 
 
 ---
 
