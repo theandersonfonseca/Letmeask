@@ -93,6 +93,22 @@ export const Questions = styled.div`
   `}
 `;
 
-export const DeleteQuestion = styled.button``;
+export const CheckQuestion = styled.button``;
+
+export const CheckQuestionImg = styled.img``;
+
+export const AnswerQuestion = styled.button`
+  ${({ theme }) => css`
+    margin-left: ${theme.spacings.xsmall};
+  `}
+`;
+
+export const AnswerQuestionImg = styled.img``;
+
+export const DeleteQuestion = styled.button`
+  ${({ theme }) => css`
+    margin-left: ${theme.spacings.xsmall};
+  `}
+`;
 
 export const DeleteQuestionImg = styled.img``;

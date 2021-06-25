@@ -1,18 +1,26 @@
-import { ReactNode } from 'react';
-import * as S from './styles';
+import { ReactNode } from 'react'
+import * as S from './styles'
 
-type QuestionsProps = {
-  content: string;
+export type QuestionsProps = {
+  content: string
   author: {
-    name: string;
-    avatar: string;
-  };
-  children?: ReactNode;
-};
+    name: string
+    avatar: string
+  }
+  children?: ReactNode
+  isAnswered?: boolean
+  isHighlighted?: boolean
+}
 
-function Question({ content, author, children }: QuestionsProps) {
+function Question({
+  content,
+  author,
+  children,
+  isAnswered = false,
+  isHighlighted = false
+}: QuestionsProps) {
   return (
-    <S.Wrapper>
+    <S.Wrapper isAnswered={isAnswered} isHighlighted={isHighlighted}>
       <S.Content>{content}</S.Content>
 
       <S.Footer>
@@ -24,7 +32,7 @@ function Question({ content, author, children }: QuestionsProps) {
         <S.ButtonsWrapper>{children}</S.ButtonsWrapper>
       </S.Footer>
     </S.Wrapper>
-  );
+  )
 }
 
-export default Question;
+export default Question
