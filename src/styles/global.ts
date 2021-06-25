@@ -5,7 +5,7 @@ import {
   GlobalStyleComponent
 } from 'styled-components'
 
-type GlobalStylesProps = {}
+type GlobalStylesProps = Record<string, unknown>
 
 const GlobalStyles: GlobalStyleComponent<
   GlobalStylesProps,

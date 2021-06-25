@@ -1,32 +1,32 @@
-import { FormEvent, useState } from 'react';
-import * as S from './styles';
+import { FormEvent, useState } from 'react'
+import * as S from './styles'
 
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
-import { database } from '../../services/firebase';
+import { Link, useHistory } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
+import { database } from '../../services/firebase'
 
-import illustrationImg from '../../assets/images/illustration.svg';
-import logoImg from '../../assets/images/logo.svg';
-import Button from '../../components/Button';
+import illustrationImg from '../../assets/images/illustration.svg'
+import logoImg from '../../assets/images/logo.svg'
+import Button from '../../components/Button'
 
 function NewRoom() {
-  const { user } = useAuth();
-  const history = useHistory();
-  const [newRoom, setNewRoom] = useState('');
+  const { user } = useAuth()
+  const history = useHistory()
+  const [newRoom, setNewRoom] = useState('')
 
   async function handleCreateRoom(e: FormEvent) {
-    e.preventDefault();
+    e.preventDefault()
 
-    if (newRoom.trim() === '') return;
+    if (newRoom.trim() === '') return
 
-    const roomRef = database.ref('rooms');
+    const roomRef = database.ref('rooms')
 
     const firebaseRoom = await roomRef.push({
       title: newRoom,
-      authorId: user?.id,
-    });
+      authorId: user?.id
+    })
 
-    history.push(`/admin/rooms/${firebaseRoom.key}`);
+    history.push(`/admin/rooms/${firebaseRoom.key}`)
   }
 
   return (
@@ -34,7 +34,7 @@ function NewRoom() {
       <S.Aside>
         <S.IllustrationImg
           src={illustrationImg}
-          alt='Ilustração simbolizando perguntas e respostas'
+          alt="Ilustração simbolizando perguntas e respostas"
         />
         <S.Title>Crie salas de Q&amp;A ao-vivo</S.Title>
         <S.SubTitle>Tire as dúvidas da sua audiência tem tempo-real</S.SubTitle>
@@ -42,8 +42,8 @@ function NewRoom() {
 
       <S.Main>
         <S.Content>
-          <Link to='/'>
-            <S.LogoImg src={logoImg} alt='letmeask' />
+          <Link to="/">
+            <S.LogoImg src={logoImg} alt="letmeask" />
           </Link>
 
           <S.Label>Crie uma nova sala</S.Label>
@@ -57,8 +57,8 @@ function NewRoom() {
 
           <S.Form onSubmit={handleCreateRoom}>
             <S.Input
-              type='text'
-              placeholder='Nome da sala'
+              type="text"
+              placeholder="Nome da sala"
               onChange={(e) => setNewRoom(e.target.value)}
               value={newRoom}
             />
@@ -68,12 +68,12 @@ function NewRoom() {
 
           <S.Call>
             Quer entrar em uma sala já existente?{' '}
-            <Link to='/'>clique aqui</Link>
+            <Link to="/">clique aqui</Link>
           </S.Call>
         </S.Content>
       </S.Main>
     </S.Wrapper>
-  );
+  )
 }
 
-export default NewRoom;
+export default NewRoom

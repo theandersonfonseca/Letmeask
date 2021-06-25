@@ -1,14 +1,14 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components'
 
-import { ButtonProps } from '.';
+import { ButtonProps } from '.'
 
 const wrapperModifiers = {
   isOutlined: (theme: DefaultTheme) => css`
     background: ${theme.colors.white};
     border: 0.1rem solid ${theme.colors.purple};
     color: ${theme.colors.purple};
-  `,
-};
+  `
+}
 
 export const Wrapper = styled.button<ButtonProps>`
   ${({ theme, isOutlined }) => css`
@@ -37,4 +37,4 @@ export const Wrapper = styled.button<ButtonProps>`
 
     ${isOutlined && wrapperModifiers.isOutlined(theme)}
   `}
-`;
+`

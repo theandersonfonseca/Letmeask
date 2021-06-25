@@ -1,6 +1,6 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components'
 
-import * as QuestionStyles from '../../components/Question/styles';
+import * as QuestionStyles from '../../components/Question/styles'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -8,14 +8,14 @@ export const Wrapper = styled.div`
       margin-top: ${theme.spacings.xsmall};
     }
   `}
-`;
+`
 
 export const Header = styled.header`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
     border-bottom: 0.1rem solid ${theme.colors.textWhite};
   `}
-`;
+`
 
 export const Content = styled.div`
   max-width: 112rem;
@@ -27,7 +27,7 @@ export const Content = styled.div`
   @media (max-width: 600px) {
     flex-direction: column;
   }
-`;
+`
 
 export const LogoImg = styled.img`
   ${({ theme }) => css`
@@ -37,7 +37,7 @@ export const LogoImg = styled.img`
       margin-bottom: ${theme.spacings.xsmall};
     }
   `}
-`;
+`
 
 export const Main = styled.main`
   ${({ theme }) => css`
@@ -45,7 +45,7 @@ export const Main = styled.main`
     margin: 0 auto;
     padding: 0 ${theme.spacings.xsmall};
   `}
-`;
+`
 
 export const TitleWrapper = styled.div`
   ${({ theme }) => css`
@@ -53,7 +53,7 @@ export const TitleWrapper = styled.div`
     display: flex;
     align-items: center;
   `}
-`;
+`
 
 export const Title = styled.h1`
   ${({ theme }) => css`
@@ -61,7 +61,7 @@ export const Title = styled.h1`
     font-size: ${theme.font.sizes.xxlarge};
     color: ${theme.colors.black};
   `}
-`;
+`
 
 export const QuestionCount = styled.span`
   ${({ theme }) => css`
@@ -73,9 +73,9 @@ export const QuestionCount = styled.span`
     font-weight: 500;
     font-size: ${theme.font.sizes.small};
   `}
-`;
+`
 
-export const Form = styled.form``;
+export const Form = styled.form``
 
 export const TextArea = styled.textarea`
   ${({ theme }) => css`
@@ -88,7 +88,7 @@ export const TextArea = styled.textarea`
     resize: vertical;
     min-height: 13rem;
   `}
-`;
+`
 
 export const FormFooter = styled.div`
   ${({ theme }) => css`
@@ -101,7 +101,7 @@ export const FormFooter = styled.div`
       width: auto;
     }
   `}
-`;
+`
 
 export const FormFooterSpan = styled.span`
   ${({ theme }) => css`
@@ -109,7 +109,7 @@ export const FormFooterSpan = styled.span`
     color: ${theme.colors.darkGray};
     font-weight: 500;
   `}
-`;
+`
 
 export const FormFooterCallLogin = styled.button`
   ${({ theme }) => css`
@@ -121,18 +121,18 @@ export const FormFooterCallLogin = styled.button`
     cursor: pointer;
     margin-left: 0.4rem;
   `}
-`;
+`
 
 export const UserInfo = styled.div`
   display: flex;
   align-items: center;
-`;
+`
 
 export const Avatar = styled.img`
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 50%;
-`;
+`
 
 export const Username = styled.span`
   ${({ theme }) => css`
@@ -141,17 +141,17 @@ export const Username = styled.span`
     font-weight: 500;
     font-size: ${theme.font.sizes.small};
   `}
-`;
+`
 
 export const Questions = styled.div`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.medium};
   `}
-`;
+`
 
 type LikeButtonProps = {
-  hasLiked: string | undefined;
-};
+  hasLiked: string | undefined
+}
 
 const likeButtonModifiers = {
   hasLiked: (theme: DefaultTheme) => css`
@@ -160,8 +160,8 @@ const likeButtonModifiers = {
     svg path {
       stroke: ${theme.colors.purple};
     }
-  `,
-};
+  `
+}
 
 export const LikeButton = styled.button<LikeButtonProps>`
   ${({ theme, hasLiked }) => css`
@@ -177,6 +177,6 @@ export const LikeButton = styled.button<LikeButtonProps>`
 
     ${!!hasLiked && likeButtonModifiers.hasLiked(theme)}
   `}
-`;
+`
 
-export const LikeCount = styled.span``;
+export const LikeCount = styled.span``

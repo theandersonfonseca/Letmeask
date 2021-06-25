@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
   height: 100vh;
-`;
+`
 
 export const Aside = styled.aside`
   ${({ theme }) => css`
@@ -19,11 +19,11 @@ export const Aside = styled.aside`
       display: none;
     }
   `}
-`;
+`
 
 export const IllustrationImg = styled.img`
   max-width: 32rem;
-`;
+`
 
 export const Title = styled.strong`
   ${({ theme }) => css`
@@ -31,7 +31,7 @@ export const Title = styled.strong`
     line-height: 4.2rem;
     margin-top: ${theme.spacings.xsmall};
   `}
-`;
+`
 
 export const SubTitle = styled.p`
   ${({ theme }) => css`
@@ -40,7 +40,7 @@ export const SubTitle = styled.p`
     margin-top: ${theme.spacings.xsmall};
     color: ${theme.colors.textWhite};
   `}
-`;
+`
 
 export const Main = styled.main`
   ${({ theme }) => css`
@@ -50,7 +50,7 @@ export const Main = styled.main`
     justify-content: center;
     align-items: center;
   `}
-`;
+`
 
 export const Content = styled.div`
   display: flex;
@@ -59,11 +59,11 @@ export const Content = styled.div`
   max-width: 32rem;
   align-items: stretch;
   text-align: center;
-`;
+`
 
 export const LogoImg = styled.img`
   align-self: center;
-`;
+`
 
 export const GoogleButton = styled.button`
   ${({ theme }) => css`
@@ -84,13 +84,13 @@ export const GoogleButton = styled.button`
       filter: brightness(0.9);
     }
   `}
-`;
+`
 
 export const GoogleImgIcon = styled.img`
   ${({ theme }) => css`
     margin-right: ${theme.spacings.xxsmall};
   `}
-`;
+`
 
 export const UserInfo = styled.div`
   ${({ theme }) => css`
@@ -100,7 +100,7 @@ export const UserInfo = styled.div`
     align-items: center;
     margin-bottom: ${theme.spacings.medium};
   `}
-`;
+`
 
 export const Avatar = styled.img`
   ${({ theme }) => css`
@@ -109,14 +109,14 @@ export const Avatar = styled.img`
     border-radius: 50%;
     margin-top: ${theme.spacings.medium};
   `}
-`;
+`
 
 export const AuthorName = styled.span`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.xsmall};
     font-size: ${theme.font.sizes.large};
   `}
-`;
+`
 
 export const Separator = styled.div`
   ${({ theme }) => css`
@@ -143,7 +143,7 @@ export const Separator = styled.div`
       margin-left: ${theme.spacings.xsmall};
     }
   `}
-`;
+`
 
 export const Form = styled.form`
   ${({ theme }) => css`
@@ -151,7 +151,7 @@ export const Form = styled.form`
       margin-top: ${theme.spacings.xsmall};
     }
   `}
-`;
+`
 
 export const Input = styled.input`
   ${({ theme }) => css`
@@ -162,7 +162,7 @@ export const Input = styled.input`
     background: ${theme.colors.white};
     border: 0.1rem solid ${theme.colors.mediumGray};
   `}
-`;
+`
 
 export const Call = styled.p`
   ${({ theme }) => css`
@@ -174,4 +174,4 @@ export const Call = styled.p`
       color: ${theme.colors.red};
     }
   `}
-`;
+`

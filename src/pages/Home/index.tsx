@@ -1,50 +1,50 @@
-import { FormEvent, useState } from 'react';
-import * as S from './styles';
+import { FormEvent, useState } from 'react'
+import * as S from './styles'
 
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
-import { database } from '../../services/firebase';
+import { Link, useHistory } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
+import { database } from '../../services/firebase'
 
-import illustrationImg from '../../assets/images/illustration.svg';
-import logoImg from '../../assets/images/logo.svg';
-import googleIconImg from '../../assets/images/google-icon.svg';
-import Button from '../../components/Button';
+import illustrationImg from '../../assets/images/illustration.svg'
+import logoImg from '../../assets/images/logo.svg'
+import googleIconImg from '../../assets/images/google-icon.svg'
+import Button from '../../components/Button'
 
-import Toast, { toast } from 'react-hot-toast';
+import Toast, { toast } from 'react-hot-toast'
 
 function Home() {
-  const history = useHistory();
-  const { user, signInWithGoogle } = useAuth();
-  const [roomCode, setRoomCode] = useState('');
+  const history = useHistory()
+  const { user, signInWithGoogle } = useAuth()
+  const [roomCode, setRoomCode] = useState('')
 
   async function handleCreateRoom() {
     if (!user) {
-      await signInWithGoogle();
+      await signInWithGoogle()
     }
 
-    history.push('/rooms/new');
+    history.push('/rooms/new')
   }
 
   async function handleJoinRoom(e: FormEvent) {
-    e.preventDefault();
+    e.preventDefault()
 
-    if (roomCode.trim() === '') return;
+    if (roomCode.trim() === '') return
 
-    const roomRef = await database.ref(`rooms/${roomCode}`).get();
+    const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
     if (!roomRef.exists()) {
-      Toast.error('Esta sala não existe.');
+      Toast.error('Esta sala não existe.')
 
-      return;
+      return
     }
 
     if (roomRef.val().endedAt) {
-      toast.error('Esta sala foi encerrada.');
+      toast.error('Esta sala foi encerrada.')
 
-      return;
+      return
     }
 
-    history.push(`/rooms/${roomCode}`);
+    history.push(`/rooms/${roomCode}`)
   }
 
   return (
@@ -52,7 +52,7 @@ function Home() {
       <S.Aside>
         <S.IllustrationImg
           src={illustrationImg}
-          alt='Ilustração simbolizando perguntas e respostas'
+          alt="Ilustração simbolizando perguntas e respostas"
         />
         <S.Title>Crie salas de Q&amp;A ao-vivo</S.Title>
         <S.SubTitle>Tire as dúvidas da sua audiência tem tempo-real</S.SubTitle>
@@ -60,7 +60,7 @@ function Home() {
 
       <S.Main>
         <S.Content>
-          <S.LogoImg src={logoImg} alt='letmeask' />
+          <S.LogoImg src={logoImg} alt="letmeask" />
 
           {user ? (
             <S.UserInfo>
@@ -70,7 +70,7 @@ function Home() {
           ) : (
             <>
               <S.GoogleButton onClick={handleCreateRoom}>
-                <S.GoogleImgIcon src={googleIconImg} alt='Logo da Google' />
+                <S.GoogleImgIcon src={googleIconImg} alt="Logo da Google" />
                 Crie sua sala com o Google
               </S.GoogleButton>
 
@@ -80,8 +80,8 @@ function Home() {
 
           <S.Form onSubmit={handleJoinRoom}>
             <S.Input
-              type='text'
-              placeholder='Digite o código da sala'
+              type="text"
+              placeholder="Digite o código da sala"
               value={roomCode}
               onChange={(e) => setRoomCode(e.target.value)}
             />
@@ -92,13 +92,13 @@ function Home() {
           {user && (
             <S.Call>
               Quer criar sua própria sala?{' '}
-              <Link to='/rooms/new'>clique aqui</Link>
+              <Link to="/rooms/new">clique aqui</Link>
             </S.Call>
           )}
         </S.Content>
       </S.Main>
     </S.Wrapper>
-  );
+  )
 }
 
-export default Home;
+export default Home

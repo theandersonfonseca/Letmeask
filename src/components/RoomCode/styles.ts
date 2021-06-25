@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.button`
   ${({ theme }) => css`
@@ -15,7 +15,7 @@ export const Wrapper = styled.button`
       filter: brightness(0.95);
     }
   `}
-`;
+`
 
 export const Content = styled.div`
   ${({ theme }) => css`
@@ -27,9 +27,9 @@ export const Content = styled.div`
     align-items: center;
     font-weight: 500;
   `}
-`;
+`
 
-export const CopyImg = styled.img``;
+export const CopyImg = styled.img``
 
 export const Code = styled.span`
   ${({ theme }) => css`
@@ -40,4 +40,4 @@ export const Code = styled.span`
     width: 23rem;
     font-size: ${theme.font.sizes.small};
   `}
-`;
+`

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -8,26 +8,24 @@ export const Wrapper = styled.div`
     align-items: center;
     padding: ${theme.spacings.large} ${theme.spacings.huge};
   `}
-`;
+`
 
 export const IconImg = styled.img`
-  ${({ theme }) => css`
-    width: 4.8rem;
-    height: 4.8rem;
-  `}
-`;
+  width: 4.8rem;
+  height: 4.8rem;
+`
 
 export const Title = styled.h2`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.small};
   `}
-`;
+`
 
 export const Text = styled.p`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.xsmall};
   `}
-`;
+`
 
 export const ButtonsWrapper = styled.div`
   ${({ theme }) => css`
@@ -49,4 +47,4 @@ export const ButtonsWrapper = styled.div`
       }
     }
   `}
-`;
+`

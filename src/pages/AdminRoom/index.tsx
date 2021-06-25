@@ -1,86 +1,86 @@
-import { useEffect, useState } from 'react';
-import * as S from './styles';
+import { useEffect, useState } from 'react'
+import * as S from './styles'
 
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { database } from '../../services/firebase';
+import { Link, useHistory, useParams } from 'react-router-dom'
+import { database } from '../../services/firebase'
 
-import logoImg from '../../assets/images/logo.svg';
-import deleteImg from '../../assets/images/delete.svg';
-import closeImg from '../../assets/images/close.svg';
-import checkImg from '../../assets/images/check.svg';
-import answerImg from '../../assets/images/answer.svg';
-import Button from '../../components/Button';
-import RoomCode from '../../components/RoomCode';
-import Question from '../../components/Question';
-import CustomModal from '../../components/CustomModal';
+import logoImg from '../../assets/images/logo.svg'
+import deleteImg from '../../assets/images/delete.svg'
+import closeImg from '../../assets/images/close.svg'
+import checkImg from '../../assets/images/check.svg'
+import answerImg from '../../assets/images/answer.svg'
+import Button from '../../components/Button'
+import RoomCode from '../../components/RoomCode'
+import Question from '../../components/Question'
+import CustomModal from '../../components/CustomModal'
 
-import toast from 'react-hot-toast';
+import toast from 'react-hot-toast'
 
-import { useRoom } from '../../hooks/useRoom';
+import { useRoom } from '../../hooks/useRoom'
 
 type RoomParams = {
-  id: string;
-};
+  id: string
+}
 
 type modalConfigType = {
-  confirmFn: Function;
-  icon: string;
-  title: string;
-  text: string;
-  confirmButtonText: string;
-};
+  confirmFn: (V: boolean) => void
+  icon: string
+  title: string
+  text: string
+  confirmButtonText: string
+}
 
 const modalConfigs = {
-  endRoom: (fn: Function) => ({
+  endRoom: (fn: (V: boolean) => void) => ({
     confirmFn: fn,
     icon: closeImg,
     title: 'Encerrar sala',
     text: 'Tem certeza que você deseja encerrar esta sala?',
-    confirmButtonText: 'Sim, encerrar',
+    confirmButtonText: 'Sim, encerrar'
   }),
 
-  deleteQuestion: (fn: Function) => ({
+  deleteQuestion: (fn: (V: boolean) => void) => ({
     confirmFn: fn,
     icon: deleteImg,
     title: 'Excluir pergunta',
     text: 'Tem certeza que você deseja excluir esta pergunta?',
-    confirmButtonText: 'Sim, excluir',
-  }),
-};
+    confirmButtonText: 'Sim, excluir'
+  })
+}
 
 function AdminRoom() {
-  const history = useHistory();
-  const { id: roomId } = useParams<RoomParams>();
-  const { questions, title, isAuthor, isClosed } = useRoom(roomId);
-  const [openModal, setOpenModal] = useState(false);
-  const [modalConfig, setModalConfig] = useState({} as modalConfigType);
+  const history = useHistory()
+  const { id: roomId } = useParams<RoomParams>()
+  const { questions, title, isAuthor, isClosed } = useRoom(roomId)
+  const [openModal, setOpenModal] = useState(false)
+  const [modalConfig, setModalConfig] = useState({} as modalConfigType)
 
-  const [deleteQuestion, setDeleteQuestion] = useState(false);
-  const [questionToBeDeleted, setQuestionToBeDeleted] = useState('');
+  const [deleteQuestion, setDeleteQuestion] = useState(false)
+  const [questionToBeDeleted, setQuestionToBeDeleted] = useState('')
 
-  const [endRoom, setEndRoom] = useState(false);
+  const [endRoom, setEndRoom] = useState(false)
 
   async function handleEndRoom() {
-    setOpenModal(true);
-    setModalConfig(modalConfigs.endRoom(setEndRoom));
+    setOpenModal(true)
+    setModalConfig(modalConfigs.endRoom(setEndRoom))
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    setOpenModal(true);
-    setQuestionToBeDeleted(questionId);
-    setModalConfig(modalConfigs.deleteQuestion(setDeleteQuestion));
+    setOpenModal(true)
+    setQuestionToBeDeleted(questionId)
+    setModalConfig(modalConfigs.deleteQuestion(setDeleteQuestion))
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-      isAnswered: true,
-    });
+      isAnswered: true
+    })
   }
 
   async function handleHighlightQuestion(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-      isHighlighted: true,
-    });
+      isHighlighted: true
+    })
   }
 
   useEffect(() => {
@@ -88,48 +88,48 @@ function AdminRoom() {
       if (deleteQuestion) {
         await database
           .ref(`rooms/${roomId}/questions/${questionToBeDeleted}`)
-          .remove();
+          .remove()
 
-        setOpenModal(false);
-        setDeleteQuestion(false);
-        toast.success('Pergunta removida.');
+        setOpenModal(false)
+        setDeleteQuestion(false)
+        toast.success('Pergunta removida.')
       }
     }
 
-    deleteQuestionFn();
-  }, [questionToBeDeleted, roomId, deleteQuestion]);
+    deleteQuestionFn()
+  }, [questionToBeDeleted, roomId, deleteQuestion])
 
   useEffect(() => {
     async function endRoomFn() {
       if (endRoom) {
         await database.ref(`rooms/${roomId}`).update({
-          endedAt: new Date(),
-        });
+          endedAt: new Date()
+        })
 
-        setOpenModal(false);
-        setEndRoom(false);
-        history.push('/');
-        toast.success('Sala encerrada.');
+        setOpenModal(false)
+        setEndRoom(false)
+        history.push('/')
+        toast.success('Sala encerrada.')
       }
     }
 
-    endRoomFn();
-  }, [roomId, endRoom, history]);
+    endRoomFn()
+  }, [roomId, endRoom, history])
 
   useEffect(() => {
-    const hasLoadedRoomInfo = isAuthor !== undefined && isClosed !== undefined;
+    const hasLoadedRoomInfo = isAuthor !== undefined && isClosed !== undefined
 
     if (isClosed && hasLoadedRoomInfo) {
-      history.push('/');
+      history.push('/')
 
-      return;
+      return
     }
 
     if (!isAuthor && hasLoadedRoomInfo) {
-      history.push(`/rooms/${roomId}`);
-      toast.error('Você não é o administrador desta sala.');
+      history.push(`/rooms/${roomId}`)
+      toast.error('Você não é o administrador desta sala.')
     }
-  }, [isAuthor, isClosed, history, roomId]);
+  }, [isAuthor, isClosed, history, roomId])
 
   return (
     <S.Wrapper>
@@ -139,8 +139,8 @@ function AdminRoom() {
 
       <S.Header>
         <S.Content>
-          <Link to='/'>
-            <S.LogoImg src={logoImg} alt='Letmeask' />
+          <Link to="/">
+            <S.LogoImg src={logoImg} alt="Letmeask" />
           </Link>
 
           <S.ButtonsWrapper>
@@ -174,40 +174,40 @@ function AdminRoom() {
                 {!question.isAnswered && (
                   <>
                     <S.CheckQuestion
-                      type='button'
+                      type="button"
                       onClick={() => handleCheckQuestionAsAnswered(question.id)}
                     >
                       <S.CheckQuestionImg
                         src={checkImg}
-                        alt='Destacar pergunta'
+                        alt="Destacar pergunta"
                       />
                     </S.CheckQuestion>
 
                     <S.AnswerQuestion
-                      type='button'
+                      type="button"
                       onClick={() => handleHighlightQuestion(question.id)}
                     >
                       <S.AnswerQuestionImg
                         src={answerImg}
-                        alt='Marcar como respondida'
+                        alt="Marcar como respondida"
                       />
                     </S.AnswerQuestion>
                   </>
                 )}
 
                 <S.DeleteQuestion
-                  type='button'
+                  type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
                 >
-                  <S.DeleteQuestionImg src={deleteImg} alt='Remover pergunta' />
+                  <S.DeleteQuestionImg src={deleteImg} alt="Remover pergunta" />
                 </S.DeleteQuestion>
               </Question>
-            );
+            )
           })}
         </S.Questions>
       </S.Main>
     </S.Wrapper>
-  );
+  )
 }
 
-export default AdminRoom;
+export default AdminRoom

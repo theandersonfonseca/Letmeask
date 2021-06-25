@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
-import * as QuestionStyles from '../../components/Question/styles';
+import * as QuestionStyles from '../../components/Question/styles'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -8,14 +8,14 @@ export const Wrapper = styled.div`
       margin-top: ${theme.spacings.xsmall};
     }
   `}
-`;
+`
 
 export const Header = styled.header`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
     border-bottom: 0.1rem solid ${theme.colors.textWhite};
   `}
-`;
+`
 
 export const Content = styled.div`
   max-width: 112rem;
@@ -27,7 +27,7 @@ export const Content = styled.div`
   @media (max-width: 600px) {
     flex-direction: column;
   }
-`;
+`
 
 export const ButtonsWrapper = styled.div`
   ${({ theme }) => css`
@@ -39,7 +39,7 @@ export const ButtonsWrapper = styled.div`
       width: auto;
     }
   `}
-`;
+`
 
 export const LogoImg = styled.img`
   ${({ theme }) => css`
@@ -49,7 +49,7 @@ export const LogoImg = styled.img`
       margin-bottom: ${theme.spacings.xsmall};
     }
   `}
-`;
+`
 
 export const Main = styled.main`
   ${({ theme }) => css`
@@ -57,7 +57,7 @@ export const Main = styled.main`
     margin: 0 auto;
     padding: 0 ${theme.spacings.xsmall};
   `}
-`;
+`
 
 export const TitleWrapper = styled.div`
   ${({ theme }) => css`
@@ -65,7 +65,7 @@ export const TitleWrapper = styled.div`
     display: flex;
     align-items: center;
   `}
-`;
+`
 
 export const Title = styled.h1`
   ${({ theme }) => css`
@@ -73,7 +73,7 @@ export const Title = styled.h1`
     font-size: ${theme.font.sizes.xxlarge};
     color: ${theme.colors.black};
   `}
-`;
+`
 
 export const QuestionCount = styled.span`
   ${({ theme }) => css`
@@ -85,30 +85,30 @@ export const QuestionCount = styled.span`
     font-weight: 500;
     font-size: ${theme.font.sizes.small};
   `}
-`;
+`
 
 export const Questions = styled.div`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.medium};
   `}
-`;
+`
 
-export const CheckQuestion = styled.button``;
+export const CheckQuestion = styled.button``
 
-export const CheckQuestionImg = styled.img``;
+export const CheckQuestionImg = styled.img``
 
 export const AnswerQuestion = styled.button`
   ${({ theme }) => css`
     margin-left: ${theme.spacings.xsmall};
   `}
-`;
+`
 
-export const AnswerQuestionImg = styled.img``;
+export const AnswerQuestionImg = styled.img``
 
 export const DeleteQuestion = styled.button`
   ${({ theme }) => css`
     margin-left: ${theme.spacings.xsmall};
   `}
-`;
+`
 
-export const DeleteQuestionImg = styled.img``;
+export const DeleteQuestionImg = styled.img``
