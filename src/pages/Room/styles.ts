@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 export const Header = styled.header`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
-    border-bottom: 0.1rem solid ${theme.colors.textWhite};
+    background: ${theme.colors.textWhite};
   `}
 `
 
@@ -59,7 +59,7 @@ export const Title = styled.h1`
   ${({ theme }) => css`
     font-family: 'Poppins', sans-serif;
     font-size: ${theme.font.sizes.xxlarge};
-    color: ${theme.colors.black};
+    color: ${theme.colors.text};
   `}
 `
 
@@ -83,10 +83,11 @@ export const TextArea = styled.textarea`
     border: 0;
     padding: ${theme.spacings.xsmall};
     border-radius: ${theme.border.radius};
-    background: ${theme.colors.white};
+    background: ${theme.colors.inputBackground};
     box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.04);
     resize: vertical;
     min-height: 13rem;
+    color: ${theme.colors.black};
   `}
 `
 
@@ -106,7 +107,7 @@ export const FormFooter = styled.div`
 export const FormFooterSpan = styled.span`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.darkGray};
+    color: ${theme.colors.text};
     font-weight: 500;
   `}
 `
@@ -137,7 +138,7 @@ export const Avatar = styled.img`
 export const Username = styled.span`
   ${({ theme }) => css`
     margin-left: ${theme.spacings.xxsmall};
-    color: ${theme.colors.black};
+    color: ${theme.colors.text};
     font-weight: 500;
     font-size: ${theme.font.sizes.small};
   `}
@@ -202,6 +203,6 @@ export const EmptyQuestionsTitle = styled.h2`
 export const EmptyQuestionsText = styled.p`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.small};
-    color: ${theme.colors.darkGray};
+    color: ${theme.colors.text};
   `}
 `

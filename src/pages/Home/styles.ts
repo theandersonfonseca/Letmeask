@@ -159,7 +159,7 @@ export const Input = styled.input`
     height: 5rem;
     border-radius: ${theme.border.radius};
     padding: 0 ${theme.spacings.xsmall};
-    background: ${theme.colors.white};
+    background: ${theme.colors.inputBackground};
     border: 0.1rem solid ${theme.colors.mediumGray};
   `}
 `
@@ -167,11 +167,11 @@ export const Input = styled.input`
 export const Call = styled.p`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.darkGray};
+    color: ${theme.colors.text};
     margin-top: ${theme.spacings.small};
 
     a {
-      color: ${theme.colors.red};
+      color: ${theme.colors.darkPink};
     }
   `}
 `

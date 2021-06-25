@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 export const Header = styled.header`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
-    border-bottom: 0.1rem solid ${theme.colors.textWhite};
+    background: ${theme.colors.textWhite};
   `}
 `
 
@@ -75,7 +75,7 @@ export const Title = styled.h1`
   ${({ theme }) => css`
     font-family: 'Poppins', sans-serif;
     font-size: ${theme.font.sizes.xxlarge};
-    color: ${theme.colors.black};
+    color: ${theme.colors.text};
   `}
 `
 
@@ -138,6 +138,6 @@ export const EmptyQuestionsTitle = styled.h2`
 export const EmptyQuestionsText = styled.p`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.small};
-    color: ${theme.colors.darkGray};
+    color: ${theme.colors.text};
   `}
 `

@@ -18,12 +18,14 @@ export const IconImg = styled.img`
 export const Title = styled.h2`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.small};
+    color: ${theme.colors.black};
   `}
 `
 
 export const Text = styled.p`
   ${({ theme }) => css`
     margin-top: ${theme.spacings.xsmall};
+    color: ${theme.colors.darkGray};
   `}
 `
 

@@ -32,8 +32,8 @@ const GlobalStyles: GlobalStyleComponent<
     body {
       font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.medium};
-      background: ${theme.colors.white};
-      color: ${theme.colors.black};
+      background: ${theme.colors.background};
+      color: ${theme.colors.text};
     }
   `}
 `

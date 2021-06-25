@@ -6,7 +6,7 @@ type WrapperProps = Pick<QuestionsProps, 'isAnswered' | 'isHighlighted'>
 
 const wrapperModifiers = {
   isAnswered: (theme: DefaultTheme) => css`
-    background: ${theme.colors.lightGray};
+    background: ${theme.colors.answeredQuestionBackground};
 
     ${Content} {
       color: ${theme.colors.darkGray};

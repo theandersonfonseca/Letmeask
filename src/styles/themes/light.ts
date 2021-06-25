@@ -1,12 +1,5 @@
 export default {
-  light: {
-    background: '#F8F8F8',
-    text: '#333333'
-  },
-  dark: {
-    background: '#33333',
-    text: '#F8F8F8'
-  },
+  title: 'light',
   border: {
     radius: '0.4rem'
   },
@@ -42,7 +35,12 @@ export default {
     hoverLightGray: '#CECECE',
     mediumGray: '#A8A8B3',
     hoverMediumGray: '#7E7E86',
-    darkGray: '#737380'
+    darkGray: '#737380',
+
+    background: '#F8F8F8',
+    text: '#333333',
+    inputBackground: '#FFFFFF',
+    answeredQuestionBackground: '#DBDCDD'
   },
   spacings: {
     xxsmall: '0.8rem',
